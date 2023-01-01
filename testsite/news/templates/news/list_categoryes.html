@@ -1,9 +1,15 @@
 <div class="list-group" style = "width: 300px; margin-top: 70px;
     margin-left: 40px;">
-    {% for item in category %}
-      <div>
-        <a href="{% url 'category' item.id %}" class="list-group-item list-group-item-action">{{item.title}}</a>
-      </div>
-    {% endfor %}
-  </div>
+    {% load cache %}
+    {% cache 45 list%}
+        {% for item in category %}
+        <div>
+          <a href="{% url 'category' item.id %}" class="list-group-item list-group-item-action">{{item.title}}</a>
+        </div>
+      {% endfor %}
+    {% endcache %}
+</div>
+    
+    
+    
   

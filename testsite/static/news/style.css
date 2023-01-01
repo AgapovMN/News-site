@@ -1,3 +1,8 @@
-body {
-    background-color: rgba(230, 40, 40, 0.255)
+h1 {
+    font-family: 'Poor Story', cursive;
 }
+
+.errorlist {
+    color: red;
+}
+

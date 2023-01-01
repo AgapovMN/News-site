@@ -27,7 +27,7 @@
           </div>
           <div>
             <h5 class="card-title">{{news_item.title}}</h5>
-            <p class="card-text" style="height: 100%; width: 1000px; margin-top: 30px;">{{news_item.content|linebreaksbr}}</p>
+            <p class="card-text" style="margin-top: 30px;">{{news_item.content|safe|linebreaksbr}}</p>
             <p class="card-text">{{news_item.created_at}}</p>
           </div>
         

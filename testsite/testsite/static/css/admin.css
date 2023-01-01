@@ -1,0 +1,17 @@
+#header {
+    background: #424242;
+}
+#branding h1 a:link, #branding h1 a:visited {
+    color: white
+}
+div.breadcrumbs {
+    background: #6b6b6b;
+}
+
+.module caption, .inline-group h2 {
+    background: #6b6b6b;
+}
+
+#changelist-filter h2 {
+    background: #424242 
+}

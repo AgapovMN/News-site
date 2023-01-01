@@ -18,15 +18,22 @@ from django.contrib import admin
 from django.urls import path, include
 from news.views import*
 from django.conf.urls.static import static
+from django.views.decorators.cache import cache_page
 
 urlpatterns = [
-    path('', main_page, name = "home"),
+    path('', cache_page(30)(HomeNews.as_view()), name = "home"),
     path('admin/', admin.site.urls),
-    path('', include('news.urls'))
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('', include('news.urls')),
+    path('captcha/', include('captcha.urls'))
 ]
 
 
 if settings.DEBUG:
+    urlpatterns = [
+path('__debug__/', include('debug_toolbar.urls')),
+] + urlpatterns
+
     urlpatterns += static(settings.MEDIA_URL,
     document_root = settings.MEDIA_ROOT)
     

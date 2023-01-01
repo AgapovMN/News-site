@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{%block title%}
+Поиск
+{% endblock%}
+
+{%block sidebar%} 
+  {% include 'inc/_sidebar.html' %}
+{% endblock%}
+
+{% block content %}
+<h1 style="margin-bottom: 20px;">Главные новости</h1>
+<div class="row">
+  {% for item in news %}
+  <div class="conteinier" style="display: flex;">
+    <div class="card">
+      </div>
+      <div>
+        <h5 class="card-header">
+          <a href="{% url 'category' item.category.id %}" style="color: rgba(0, 0, 0, 0.413);">
+            {{item.category}}
+          </a>
+        </h5>
+      <div class="card-body">
+        <div class="conteinier" style="display: flex;">
+          <div>
+            {% if item.photo %}
+            <img src="{{item.photo.url}}" alt="" width="350px" style="margin-right: 40px;">
+            {% endif %}
+          </div>
+          <div>
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text" style="margin-top: 30px;">{{item.content|safe|truncatewords:50|linebreaksbr}}</p>
+            <p class="card-text">{{item.created_at}}</p>
+            <a href="{{ item.get_absolute_url }}" class="btn btn-primary" 
+            style="background-color: grey;
+            border: rgb(39, 39, 39)">
+            Читать далее
+            </a>
+          </div>
+        
+      </div>    
+      </div>
+    </div>
+
+  </div>
+  
+  {% endfor %}
+</div>
+
+{% endblock%}
